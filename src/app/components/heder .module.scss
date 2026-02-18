@@ -1,0 +1,36 @@
+.header {
+    display:flex;
+    justify-content: space-between;//ロゴとメニューを離す
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd; //下に薄い線がつく
+    position: static; //スクロールしてもついてくる
+    top: 0;
+    z-index:100;
+}
+
+.logo{
+    font-size:1.5rem;
+    font-weight: bold;
+    color:var(--primary-color);
+}
+
+.nav{
+    ul{
+        display:flex;
+        gap: 20px; //メニュー同士の感覚
+        list-style:none;
+        margin:0;
+        padding :0;
+
+        li{
+            font-weight: 500;
+            cursor:pointer;
+
+            &:hover {
+                color: var(--primary-color); //マウスが乗ったら青くする
+            }
+        }
+    }
+}

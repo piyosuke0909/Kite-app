@@ -1,0 +1,70 @@
+/* ===========================
+   サイドバー（Instagram風 左ナビゲーション）
+   =========================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 100vh;
+    background: #fff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+.navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.navItem {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+    background: none;
+    border: none;
+    color: #333;
+
+    &:hover {
+        background: #f0f0f0;
+    }
+
+    &.active {
+        background: #f0f0f0;
+    }
+}
+
+.navIcon {
+    width: 24px;
+    height: 24px;
+}
+
+/* 下部のナビアイテム */
+.navBottom {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+}

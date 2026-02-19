@@ -1,0 +1,55 @@
+.container{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    overflow: hidden;
+    z-index: -1;
+
+    //少し暗くして上の文字を見やすくするファイルター
+    &::after{
+        content: '';
+        position: absolute;
+        inset:0;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(2px);
+    }
+}
+
+.row{
+    display:flex;
+    width:max-content;
+    margin-bottom:20px;
+
+    animation: scrollLeft 15s linear infinite;
+
+    &:nth-child(even){
+        animation-direction: reverse;
+    }
+}
+
+.imageWrapper{
+    width:200px;
+    height:140px;
+    margin-right: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink:0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+    img{
+        width:100%;
+        height:100%;
+        object-fit: cover;
+    }
+}
+
+@keyframes scrollLeft{
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}

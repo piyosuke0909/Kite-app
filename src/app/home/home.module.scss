@@ -1,0 +1,738 @@
+/* ===========================
+   ページ全体
+   サイドバー(72px) の右にコンテンツを配置
+   ヘッダーを隠す（このページ専用）
+   =========================== */
+.page {
+    min-height: 100vh;
+    background: #fef9e7;
+    margin-left: 72px;
+    padding: 24px 32px 24px 218px;
+}
+
+/* layout.tsxのHeaderを非表示にする */
+.page :global(header) {
+    display: none;
+}
+
+/* 横並び：左に2×2カード、右に写真グリッド */
+.content {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+/* 左カラム：カード枠を縦に並べる */
+.leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
+    width: 428px;
+}
+
+/* ===========================
+   左カラム（2×2 カードグリッド）
+   =========================== */
+/* 黄色の枠でカード4つを囲む */
+.cardWrapper {
+    background: #fdf3c7;
+    border-radius: 20px;
+    padding: 14px;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    width: 100%;
+}
+
+/* --- 共通カードスタイル --- */
+.card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.weatherCard {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cardLabel {
+    font-size: 10px;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.weatherTop {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.iconCircle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #e8f4fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dateText {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1;
+}
+
+.locationText {
+    font-size: 10px;
+    color: #999;
+    margin-top: 2px;
+}
+
+.tempText {
+    font-size: 11px;
+    color: #666;
+    font-weight: 600;
+}
+
+/* --- 週間予報カード（右上） --- */
+.forecastCard {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.forecastRow {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+}
+
+.forecastItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 4px 4px;
+}
+
+.forecastDate {
+    font-size: 10px;
+    font-weight: 700;
+    color: #333;
+}
+
+.forecastDay {
+    font-size: 9px;
+    color: #aaa;
+}
+
+.iconCircleSmall {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e8f4fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forecastTemp {
+    font-size: 9px;
+    color: #999;
+}
+
+/* --- コーデ画像カード（左下） --- */
+.outfitCard {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 3 / 4;
+}
+
+.outfitDots {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+
+    &.active {
+        background: #fff;
+    }
+}
+
+/* --- 提案テキストカード（右下） --- */
+.suggestionCard {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.suggestionTitle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.tag {
+    background: #f0f0f0;
+    color: #555;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+
+.suggestionBody {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #777;
+    flex: 1;
+}
+
+.styleUpBtn {
+    align-self: flex-end;
+    margin-top: 8px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+/* ===========================
+   持ち物チェックカード
+   =========================== */
+/* 水色の背景枚 */
+.belongingsWrapper {
+    background: #e0f2fa;
+    border-radius: 20px;
+    padding: 14px;
+    flex-shrink: 0;
+}
+
+.belongingsCard {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.belongingsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addBtn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+    background: #d4eef9;
+    color: #2a7ab5;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.15s;
+
+    &:hover {
+        background: #b8e2f4;
+    }
+}
+
+.addForm {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.addInput {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+    outline: none;
+
+    &:focus {
+        border-color: #a0d4ef;
+    }
+}
+
+.addSubmitBtn {
+    background: #2a7ab5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.15s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.deleteBtn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s, background 0.15s;
+    flex-shrink: 0;
+
+    &:hover {
+        color: #e55;
+        background: #fef0f0;
+    }
+}
+
+/* チェックリスト + メモの横並びレイアウト */
+.belongingsBody {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.belongingsListArea {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    text-align: center;
+}
+
+.emptyIcon {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.emptyText {
+    font-size: 11px;
+    color: #999;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.memoArea {
+    width: 160px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.memoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eraserBtn {
+    width: 22px;
+    height: 22px;
+    border: none;
+    background: transparent;
+    color: #bbb;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 0;
+    transition: color 0.15s, background 0.15s;
+
+    &:hover {
+        color: #e55;
+        background: #fef0f0;
+    }
+}
+
+.memoLabel {
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+}
+
+.memoInput {
+    flex: 1;
+    min-height: 90px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #333;
+    background: #fafcfe;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+
+    &:focus {
+        border-color: #a0d4ef;
+        background: #fff;
+    }
+
+    &::placeholder {
+        color: #bbb;
+    }
+}
+
+.memoCount {
+    font-size: 9px;
+    color: #bbb;
+    text-align: right;
+}
+
+.belongingsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.belongingsItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.checkOn {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: #d4eef9;
+    color: #2a7ab5;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.checkOff {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: #eee;
+    color: #bbb;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.belongingsName {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    flex: 1;
+}
+
+.belongingsStatus {
+    font-size: 10px;
+    font-weight: 600;
+    color: #999;
+}
+
+/* ===========================
+   AI一言アドバイスカード
+   =========================== */
+/* 薄い紫の背景枠 */
+.aiAdviceWrapper {
+    background: #ede7f6;
+    border-radius: 20px;
+    padding: 14px;
+    flex-shrink: 0;
+}
+
+.aiAdviceCard {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.aiAdviceHeader {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.aiAdviceIcon {
+    font-size: 14px;
+    color: #9c6ddb;
+}
+
+.aiAdviceText {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #444;
+    margin: 8px 0 10px;
+}
+
+.aiAdviceFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aiAdviceTime {
+    font-size: 9px;
+    color: #bbb;
+}
+
+.aiRefreshBtn {
+    font-size: 10px;
+    font-weight: 700;
+    color: #9c6ddb;
+    background: #f3eefa;
+    border: none;
+    border-radius: 8px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover {
+        background: #e8ddf5;
+    }
+}
+
+/* ===========================
+   お出かけスポットカード
+   =========================== */
+/* 緑色の背景枚 */
+.outingWrapper {
+    background: #e5f1e4;
+    border-radius: 20px;
+    padding: 14px;
+    flex-shrink: 0;
+}
+
+.outingCard {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.outingList {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.outingItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover {
+        background: #f0f0f0;
+    }
+}
+
+.outingInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.outingName {
+    font-size: 12px;
+    font-weight: 700;
+    color: #222;
+}
+
+.outingTag {
+    font-size: 10px;
+    color: #999;
+    background: #eef5ff;
+    padding: 1px 8px;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.outingDistance {
+    font-size: 11px;
+    font-weight: 600;
+    color: #bbb;
+}
+
+/* ===========================
+   右カラム（ファッション写真グリッド 2列×3行）
+   =========================== */
+.photoSection {
+    flex: 1;
+    max-width: 580px;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.styleUpFloat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #d4eef9;
+    color: #333;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+    transition: background 0.2s, transform 0.15s;
+
+    &:hover {
+        background: #b8e2f4;
+        transform: translateY(-1px);
+    }
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sectionTitle {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111;
+}
+
+.sectionLink {
+    font-size: 9px;
+    color: #999;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.photoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.photoItem {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #eee;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.85;
+    }
+}

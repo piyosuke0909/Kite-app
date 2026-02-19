@@ -1,0 +1,46 @@
+.main{
+    display:flex;
+    flex-direction:column; //左中央揃え
+    align-items:center;
+    justify-content:center;
+    min-height: 80vh;
+    padding:2rem;
+    background-color: var(--gray-light);
+}
+
+.title{
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background:linear-gradient(to right,#9ec1fa,#000000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color:transparent;
+}
+
+.description{
+    font-size:1.5rem;
+    color:#666;
+    max-width:600px;
+    text-align:center;
+    line-height:1.6;
+}
+
+    .buttonContainer{
+    margin-top:2rem;
+    display:flex;
+    gap:1rem;
+    }
+
+    .button{
+    padding:1rem 2rem;
+    background-color: var(--primary-color);
+    color:white;
+    border-radius: 50px;
+    font-weight: bold;
+    transition:opacity 0.2s;
+
+    &:hover{
+        opacity:0.8;//マウスを乗せると少し透明
+    }
+    }
